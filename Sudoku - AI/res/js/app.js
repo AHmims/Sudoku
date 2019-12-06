@@ -9,13 +9,8 @@ function createTable() {
     // sub tables
     let row;
     for (let i = 1; i <= 9; i++) {
-        switch (i) {
-            case 1:
-            case 4:
-            case 7:
-                row = document.createElement('tr');
-                break;
-        }
+        if (i == 1 || i == 4 || i == 7)
+            row = document.createElement('tr');
         // 
         let column = document.createElement('td');
         column.setAttribute('class', 'tableColumns');
@@ -41,12 +36,25 @@ function createTable() {
         row.appendChild(column);
         row.setAttribute('class', 'tableRows');
         // 
-        switch (i) {
-            case 3:
-            case 6:
-            case 9:
-                mainTable.appendChild(row);
-        }
+        if (i == 3 || i == 6 || i == 9)
+            mainTable.appendChild(row);
     }
     document.getElementById('board').appendChild(mainTable);
+    fillTable();
+}
+// 
+function fillTable() {
+    let subTables = document.getElementsByClassName('tableSubTables');
+    let tableSubColumns = document.getElementsByClassName('tableSubRows');
+    let c = 0;
+    for (let i = 0; i < subTables.length; i++) {
+        // console.log(tableColumns[i]);
+        let columnU = [];
+        do {
+            console.log(c);
+            columnU.push[tableSubColumns[i + c]];
+            c++;
+        } while (c < 3);
+        console.log(columnU);
+    }
 }
