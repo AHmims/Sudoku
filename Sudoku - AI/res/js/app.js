@@ -24,7 +24,7 @@ function createTable() {
                 subRow = document.createElement('tr');
             let subColumn = document.createElement('td');
             subColumn.setAttribute('class', 'tableSubColumns');
-            subColumn.innerText = ".";
+            subColumn.innerText = " ";
             subRow.appendChild(subColumn);
             subRow.setAttribute('class', 'tableSubRows');
             if (y == 3 || y == 6 || y == 9)
@@ -45,16 +45,76 @@ function createTable() {
 // 
 function fillTable() {
     let subTables = document.getElementsByClassName('tableSubTables');
-    let tableSubColumns = document.getElementsByClassName('tableSubRows');
-    let c = 0;
+    let tableSubRows = document.getElementsByClassName('tableSubRows');
+    let tableColumns = document.getElementsByClassName('tableSubColumns');
+    let c = 0,
+        g = 0;
     for (let i = 0; i < subTables.length; i++) {
-        // console.log(tableColumns[i]);
-        let columnU = [];
-        do {
-            console.log(c);
-            columnU.push[tableSubColumns[i + c]];
+        let tableU = [],
+            re = 0,
+            mergedArrays = [],
+            randomIndexes = [];
+        // 
+        while (re < 3) {
+            // rowU.push[tableSubRows[c].innerText];
+            // tableSubRows[c].innerText = c;
+            let rowU = [],
+                ree = 0;
+            while (ree < 3) {
+                rowU.push(g);
+                g++;
+                ree++;
+                // console.log(g);
+            }
+            // 
+            mergedArrays = mergedArrays.concat(rowU);
+            // 
+            tableU.push(rowU);
             c++;
-        } while (c < 3);
-        console.log(columnU);
+            re++;
+        }
+        let nb = Math.floor(Math.random() * (3 - 1) + 1);
+        // 
+        for (let y = 0; y < nb; y++) {
+            randomIndexes.push("-1");
+        }
+        let approve = true,
+            y = 0;
+        while (y < nb) {
+            approve = true;
+            // while (randomIndexes[y] == "-1") {
+            while (approve) {
+                let value = Math.floor(Math.random() * (mergedArrays[8] - mergedArrays[0]) + mergedArrays[0]);
+                for (let x = 0; x < randomIndexes.length; x++) {
+                    if (randomIndexes[x] == value) {
+                        approve = false;
+                        x = randomIndexes.length;
+                    }
+                }
+
+                if (approve)
+                    randomIndexes[y] = value;
+
+                if (y >= nb) {
+                    // approve = false;
+                    // console.log(randomIndexes);
+                }
+            }
+            // }
+            y++;
+        }
+        //
+        console.log(randomIndexes);
+        for (let j = 0; j < randomIndexes.length; j++) {
+            if (randomIndexes[j] != "-1")
+                tableColumns[randomIndexes[j]].innerText = 0;
+        }
+        // 
+        // console.table({
+        //     nb,
+        //     randomIndexes
+        // });
+        // console.log(mergedArrays);
+        // console.log(tableU);
     }
 }
