@@ -40,9 +40,13 @@ function createTable() {
             mainTable.appendChild(row);
     }
     document.getElementById('board').appendChild(mainTable);
-    fillTable();
+    // fillTable();
+    const data = getPositions();
+    console.log(data);
+    // 
+
 }
-// 
+// DEPRACTED
 function fillTable() {
     let subTables = document.getElementsByClassName('tableSubTables');
     let tableSubRows = document.getElementsByClassName('tableSubRows');
@@ -117,4 +121,75 @@ function fillTable() {
         // console.log(mergedArrays);
         // console.log(tableU);
     }
+}
+// 
+function getPositions() {
+    let lt = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
+    let resData = {
+        A: [],
+        B: [],
+        C: [],
+        D: [],
+        E: [],
+        F: [],
+        G: [],
+        H: [],
+        I: [],
+    }
+    let resIndexes = {
+        A: [],
+        B: [],
+        C: [],
+        D: [],
+        E: [],
+        F: [],
+        G: [],
+        H: [],
+        I: [],
+    }
+    let rowI = 0;
+    // looping for the nb of big table rows : 3
+    for (let i = 0; i < 3; i++) {
+        // i = 0 => 0 -> 9
+        // i = 1 => 9 -> 18
+        // i = 2 => 18 -> 27
+        for (let j = 9 * i; j < 9 * (i + 1); j++) {
+            // j represents the row index
+            for (let y = 3 * j; y < 3 * (j + 1); y++) {
+                if (j == 0 || j == 3 || j == 6) {
+                    resData[lt[0]].push(lt[0] + (resData[lt[0]].length + 1));
+                    resIndexes[lt[0]].push(y);
+                } else if (j == 1 || j == 4 || j == 7) {
+                    resData[lt[1]].push(lt[1] + (resData[lt[1]].length + 1));
+                    resIndexes[lt[1]].push(y);
+                } else if (j == 2 || j == 5 || j == 8) {
+                    resData[lt[2]].push(lt[2] + (resData[lt[2]].length + 1));
+                    resIndexes[lt[2]].push(y);
+                } else if (j == 9 || j == 12 || j == 15) {
+                    resData[lt[3]].push(lt[3] + (resData[lt[3]].length + 1));
+                    resIndexes[lt[3]].push(y);
+                } else if (j == 10 || j == 13 || j == 16) {
+                    resData[lt[4]].push(lt[4] + (resData[lt[4]].length + 1));
+                    resIndexes[lt[4]].push(y);
+                } else if (j == 11 || j == 14 || j == 17) {
+                    resData[lt[5]].push(lt[5] + (resData[lt[5]].length + 1));
+                    resIndexes[lt[5]].push(y);
+                } else if (j == 18 || j == 21 || j == 24) {
+                    resData[lt[6]].push(lt[6] + (resData[lt[6]].length + 1));
+                    resIndexes[lt[6]].push(y);
+                } else if (j == 19 || j == 22 || j == 25) {
+                    resData[lt[7]].push(lt[7] + (resData[lt[7]].length + 1));
+                    resIndexes[lt[7]].push(y);
+                } else if (j == 20 || j == 23 || j == 26) {
+                    resData[lt[8]].push(lt[8] + (resData[lt[8]].length + 1));
+                    resIndexes[lt[8]].push(y);
+                }
+            }
+        }
+    }
+    // 
+    return {
+        resData,
+        resIndexes
+    };
 }
